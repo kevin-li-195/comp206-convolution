@@ -1,7 +1,6 @@
 #include "fast_filter.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 
 void main(int argc, char *argv[]) {
     FILE *input_bmp, *output_bmp;
@@ -10,7 +9,8 @@ void main(int argc, char *argv[]) {
     input_bmp = fopen(argv[1], "rb");
     output_bmp = fopen(argv[2], "wb");
     filter_width = atoi(argv[3]);
-    filter_width_sq = (int) pow((double)filter_width, 2);
+    // filter_width_sq = (int) pow((double)filter_width, 2);
+    filter_width_sq = filter_width*filter_width;
 
     // Need to malloc size of bmp for output of doFiltering
     fseek(input_bmp, 0L, SEEK_END);
