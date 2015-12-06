@@ -11,7 +11,6 @@ void main(int argc, char *argv[]) {
     output_bmp = fopen(argv[2], "wb");
     filter_width = atoi(argv[3]);
     filter_width_sq = (int) pow((double)filter_width, 2);
-    printf("%d", filter_width_sq);
 
     // Need to malloc size of bmp for output of doFiltering
     fseek(input_bmp, 0L, SEEK_END);
