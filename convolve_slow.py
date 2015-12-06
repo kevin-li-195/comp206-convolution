@@ -107,4 +107,12 @@ def main():
     out_img_data = doConvolution( img_data, filter_width, filter_weights, img_height, img_width )
     saveBMPImage( out_img_data, header_data, sys.argv[2], img_height, img_width )
 
+if (len(sys.argv) < 5):
+    print("Not enough args.")
+    sys.exit(0)
+
+if (len(sys.argv) != ((int(sys.argv[3]) ** 2))+4):
+    print("Filter matrix is incorrectly formatted. Make sure it's filter width ^ 2.")
+    sys.exit(0)
+
 cProfile.run("main()")

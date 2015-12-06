@@ -9,6 +9,11 @@ void main(int argc, char *argv[]) {
     filter_width = atoi(argv[3]);
     filter_width_sq = filter_width*filter_width;
 
+    if (argc < 5) {
+        printf("Not enough args.\n");
+        exit(0);
+    }
+
     if (!(argc == 4+filter_width_sq)) {
         printf("Incorrect filter matrix. Try again.\nMake sure filter size is filter width ^ 2.\n");
         exit(0);
