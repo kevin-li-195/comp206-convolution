@@ -6,11 +6,16 @@ void main(int argc, char *argv[]) {
     FILE *input_bmp, *output_bmp;
     int filter_width, filter_width_sq;
     unsigned char *func_input, *func_output;
+    filter_width = atoi(argv[3]);
+    filter_width_sq = filter_width*filter_width;
+
+    if (!(argc == 4+filter_width_sq)) {
+        printf("Incorrect filter matrix. Try again.\nMake sure filter size is filter width ^ 2.\n");
+        exit(0);
+    }
+
     input_bmp = fopen(argv[1], "rb");
     output_bmp = fopen(argv[2], "wb");
-    filter_width = atoi(argv[3]);
-    // filter_width_sq = (int) pow((double)filter_width, 2);
-    filter_width_sq = filter_width*filter_width;
 
     // Need to malloc size of bmp for output of doFiltering
     fseek(input_bmp, 0L, SEEK_END);
