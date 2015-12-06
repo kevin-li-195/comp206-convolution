@@ -1,6 +1,15 @@
 import ctypes as c
 import sys
 import os
+
+if (len(sys.argv) < 5):
+    print("Not enough args.")
+    sys.exit(0)
+
+if (len(sys.argv) != ((int(sys.argv[3]) ** 2))+4):
+    print("Filter matrix is incorrectly formatted. Make sure it's filter width ^ 2.")
+    sys.exit(0)
+
 c.cdll.LoadLibrary("libc.so.6")
 c.cdll.LoadLibrary("libfast_filter.so")
 libc = c.CDLL("libc.so.6")
@@ -35,6 +44,5 @@ ff.doFiltering(func_input, cfilter_matrix, cfilter_width, func_output)
 
 output_bmp.write(func_output)
 
-print(repr(func_output.value))
 input_bmp.close()
 output_bmp.close()
